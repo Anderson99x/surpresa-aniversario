@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa Especial...</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="lock-screen">
+        <h2>Uma surpresa está chegando...</h2>
+        <p>Prepare o coração! Algo muito especial preparado com todo o carinho do mundo será revelado em:</p>
+        <div class="contador">
+            <div class="contador-bloco">
+                <span id="dias" class="contador-numero">0</span>
+                <span class="contador-texto">Dias</span>
+            </div>
+            <div class="contador-bloco">
+                <span id="horas" class="contador-numero">0</span>
+                <span class="contador-texto">Horas</span>
+            </div>
+            <div class="contador-bloco">
+                <span id="minutos" class="contador-numero">0</span>
+                <span class="contador-texto">Minutos</span>
+            </div>
+            <div class="contador-bloco">
+                <span id="segundos" class="contador-numero">0</span>
+                <span class="contador-texto">Segundos</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+    
+        <div id="tsparticles"></div>
+
+        <header>
+            <h1 id="titulo-animado"></h1> 
+            <p>Preparei uma pequena surpresa para celebrar o seu dia.</p>
+        </header>
+
+        <main>
+            <section class="story-section">
+                <h2>Nossa Linha do Tempo</h2>
+                <div class="story-container">
+                    <div class="story-image-column">
+                        <div class="image-display">
+                            <img id="story-image" src="imagens/foto_inicio.jpg" alt="Nossa história">
+                        </div>
+                    </div>
+                    <div class="story-text-column">
+                        <div class="text-trigger" data-image="imagens/foto_encontro.jpg">
+                            <h3>O Início de Tudo</h3>
+                            <p>Lembra daquele dia? Mal sabíamos que seria o começo da nossa história...</p>
+                        </div>
+                        <div class="text-trigger" data-image="imagens/foto_viagem.jpg">
+                            <h3>Nossa Primeira Viagem</h3>
+                            <p>Pegar a estrada com você pela primeira vez foi inesquecível...</p>
+                        </div>
+
+                        <div class="text-trigger" data-image="imagens/foto_show.jpg">
+                            <h3>Aquele Show Marcante</h3>
+                            <p>Lembra do dia que a gente foi no show do Luan Santana que voce tanto queria?...</p>
+                        </div>
+
+                        <div class="text-trigger" data-image="imagens/foto_jantar.jpg">
+                            <h3>Nosso Cantinho Favorito</h3>
+                            <p>nosso cantinho de ficar sem fazer nada em casa, mas só de estarmos juntos vem a calmaria...</p>
+                        </div>
+
+                        <div class="letter-trigger-container">
+                            <button id="open-letter-button" class="cta-button">Para ler com o coração...</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="call-to-action">
+                <h2>O que você quer fazer agora?</h2>
+                <p>Preparei duas surpresas: um joguinho para testar sua memória ou nosso álbum de fotos para relembrar.</p>
+                
+                <div class="action-buttons-container">
+                    <a href="jogo.html" class="cta-button">Iniciar o Jogo</a>
+                    <a href="album.html" class="cta-button secondary">Ver Nosso Álbum</a>
+                </div>
+            </section>
+        </main>
+        
+        <div id="letter-modal" class="hidden">
+            <div class="modal-content">
+                <button id="close-letter">&times;</button>
+                <h2>Uma Carta Para Você...</h2>
+                <p>Meu amor,</p>
+                <p><strong>Hoje é um dia muito especial, pois é o dia em que a Sra. Petrasso te botou no mundo, e eu só tenho a agradecer por ter você na minha vida e poder comemorar mais um aniversário ao seu lado.
+
+Saiba que você é incrível e eu amo cada detalhe seu: seu cabelo, seu sorriso lindo, a forma que você me faz bem só de estar comigo. Desejo que neste novo ciclo seja cheio de coisas boas, que você conquiste tudo que você almeja.
+
+Me sinto muito sortudo por ter você ao meu lado, compartilhando tudo isso. Saiba que sempre vou estar ao seu lado, cuidando, apoiando e amando você independentemente da situação</strong></p>
+                <p>Com todo o meu amor,<br>
+                Seu Momo</p>
+            </div>
+        </div>
+        
+        <div id="youtube-player" style="position: fixed; bottom: 10px; right: 10px; width: 0; height: 0; overflow: hidden; z-index: -1;">
+            <iframe id="youtube-iframe" width="1" height="1"
+                src="https://www.youtube.com/embed/-YzDsDMYqdw?autoplay=1&loop=1&playlist=-YzDsDMYqdw&controls=0&modestbranding=1&mute=1&enablejsapi=1"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        <footer>
+            <p>Feito com todo o meu amor, por Seu Momo. Eu te amo!</p>
+        </footer>
+    </div>
+    
+    <script src="contador.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <script src="animacoes.js"></script>
+    <script src="efeitos.js"></script>
+
+</body>
+</html>

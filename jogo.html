@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Jogo!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page-body">
+
+    <div id="tsparticles"></div>
+
+    <section id="login-container" class="game-container">
+        <h2>Acesso Secreto</h2>
+        <p>Para desbloquear o jogo, digite uma data muito especial para nós no formato DD/MM/AAAA.</p>
+        <div class="login-form">
+            <input type="text" id="date-input" placeholder="DD/MM/AAAA">
+            <button id="login-button" class="cta-button">Desbloquear</button>
+        </div>
+        <p id="error-message"></p>
+    </section>
+
+    <section id="game-container" class="game-container hidden">
+        <div id="game">
+            <h2>Nosso Joguinho da Memória</h2>
+
+            <div id="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="progress-text"></p>
+            <h3 id="question"></h3>
+            <div id="options" class="options-grid"></div>
+            <div id="result"></div>
+            <img id="surprise-image" src="" alt="Foto Surpresa" class="hidden">
+        </div>
+        <div id="end-game-screen" class="hidden">
+            <h2>Parabéns, meu amor!</h2>
+            <p>Você completou o jogo e provou que lembra de cada detalhe da nossa história.</p>
+            <img src="imagens/foto_final_parabens.jpg" alt="Foto especial de nós dois" class="final-photo">
+            <div class="end-game-buttons">
+                <a href="jogo.html" class="cta-button">Jogar Novamente</a>
+                <a href="index.html" class="cta-button secondary">Voltar para a Surpresa</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="efeitos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

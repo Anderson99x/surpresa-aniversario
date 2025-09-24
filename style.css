@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --cor-primaria: #e91e63;
+    --cor-primaria-escura: #c2185b;
+    --cor-fundo-inicio: #f8cdda;
+    --cor-fundo-fim: #fce4ec;
+    --cor-texto: #333;
+    --cor-texto-claro: #fff;
+    --fonte-titulo: 'Dancing Script', cursive;
+    --fonte-corpo: 'Poppins', sans-serif;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+#tsparticles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+header {
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.5em, 8vw, 4.5em);
+    color: var(--cor-primaria);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin: 0;
+    min-height: 80px;
+}
+
+header p {
+    font-size: 1.2em;
+    font-weight: 300;
+    color: var(--cor-texto);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+/* SEÇÃO DA HISTÓRIA (SCROLLYTELLING) */
+.story-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    animation: fadeInUp 1s ease-out 0.5s;
+    animation-fill-mode: backwards;
+}
+
+.story-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.story-image-column {
+    flex: 1;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.image-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#story-image {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    object-fit: cover;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.story-text-column {
+    flex: 1;
+    text-align: left;
+}
+
+.text-trigger {
+    padding: 20px;
+    margin-bottom: 40vh; /* <<< ESPAÇAMENTO AJUSTADO AQUI */
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    opacity: 0.4;
+}
+
+.text-trigger.active {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.text-trigger h3 {
+    font-size: 1.8em;
+    color: var(--cor-primaria-escura);
+    margin-top: 0;
+}
+
+.text-trigger p {
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+/* SEÇÃO DO JOGO */
+.game-container {
+    width: 100%;
+    max-width: 1100px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: var(--cor-primaria-escura);
+    margin-bottom: 30px;
+}
+
+#question {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.option {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.option:hover {
+    background-color: var(--cor-primaria-escura);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    min-height: 25px;
+}
+
+#surprise-image {
+    max-width: 60%; /* <<< TAMANHO DA FOTO DO QUIZ AJUSTADO */
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #333;
+    color: var(--cor-fundo-fim);
+    font-weight: 300;
+}
+
+/* ESTILOS PARA PÁGINA E BOTÕES DO JOGO */
+.call-to-action {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out 1s;
+    animation-fill-mode: backwards;
+}
+
+.cta-button {
+    display: inline-block;
+    background-image: linear-gradient(45deg, var(--cor-primaria), var(--cor-primaria-escura));
+    color: var(--cor-texto-claro);
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.game-page-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fce4ec;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--cor-primaria-escura);
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* ESTILOS PARA TELA FINAL DO JOGO */
+#end-game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.final-photo {
+    max-width: 50%; /* <<< TAMANHO DA FOTO FINAL AJUSTADO */
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.end-game-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cta-button.secondary {
+    background-color: #eee;
+    color: var(--cor-primaria-escura);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: none;
+}
+
+.cta-button.secondary:hover {
+    background-color: #ddd;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ANIMAÇÃO DE BRILHO PULSANTE PARA BOTÃO */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(233, 30, 99, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4);
+  }
+}
+/* CARTA DE AMOR SECRETA (MODAL) */
+.letter-trigger-container {
+    padding-top: 20px;
+    margin-bottom: 70vh;
+    text-align: center;
+}
+
+#letter-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#letter-modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #fdfbf7;
+    color: #444;
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: left;
+    transform: scale(0.9);
+    transition: transform 0.5s ease;
+}
+
+#letter-modal.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-family: var(--fonte-titulo);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.modal-content p {
+    font-family: 'Georgia', serif;
+    line-height: 1.8;
+    font-size: 1.1em;
+}
+
+#close-letter {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5em;
+    font-weight: 300;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#close-letter:hover {
+    color: #333;
+}
+
+/* TELA DE BLOQUEIO / CONTAGEM REGRESSIVA */
+#lock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2c3e50, #4a6da0);
+    z-index: 9999;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: var(--fonte-corpo);
+}
+
+#lock-screen h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.5em, 8vw, 4.5em);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+#lock-screen p {
+    font-size: 1.2em;
+    max-width: 500px;
+}
+
+.contador {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.contador-bloco {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.contador-bloco span {
+    display: block;
+}
+
+.contador-numero {
+    font-size: 3em;
+    font-weight: 600;
+}
+
+.contador-texto {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+/* PÁGINA DO ÁLBUM DE FOTOS */
+.album-page-body {
+    background: #fce4ec;
+}
+
+.album-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.album-container h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 3.5em;
+    color: var(--cor-primaria-escura);
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.album-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.album-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.album-grid a:hover img {
+    transform: scale(1.1);
+}
+
+/* Container para os botões no index.html */
+.action-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* BOTÃO DE CONTROLE DE MÚSICA DO YOUTUBE */
+#youtube-music-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+}
+
+#youtube-music-toggle:hover {
+    transform: scale(1.1);
+    background-color: var(--cor-primaria-escura);
+}
+
+#youtube-music-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+#youtube-music-toggle.playing #play-icon {
+    display: none;
+}
+
+#youtube-music-toggle.playing #pause-icon {
+    display: block;
+}
+
+/* =============================================
+   == BARRA DE PROGRESSO DO JOGO ==
+   =============================================
+*/
+#progress-container {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 10px;
+    margin: 20px 0 5px 0; /* Espaçamento */
+    overflow: hidden; /* Garante que a barra interna não saia das bordas */
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%; /* Começa com 0% */
+    background-color: var(--cor-primaria);
+    border-radius: 10px;
+    /* Efeito suave de transição quando a barra crescer */
+    transition: width 0.5s ease-in-out;
+}
+
+#progress-text {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--cor-texto);
+    margin-bottom: 25px; /* Espaço antes da pergunta */
+}
